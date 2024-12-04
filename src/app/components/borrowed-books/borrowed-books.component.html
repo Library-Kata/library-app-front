@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <h2>My Borrowed Books</h2>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <table class="table table-bordered" *ngIf="borrowings.length > 0">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>return book</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let borrowing of borrowings">
+      <td>{{ borrowing.book.title }}</td>
+      <td>{{ borrowing.book.author }}</td>
+      <td><button class="btn btn-danger btn-sm" (click)="returnBook(borrowing.id)">Return</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <div *ngIf="borrowings.length === 0" class="alert alert-info">You have no books currently borrowed or awaiting return</div>
+
+</div>

@@ -1,0 +1,61 @@
+<div class="container mt-5">
+  <h2>User Management</h2>
+
+  <!-- Bouton pour ouvrir la modal -->
+  <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#registerUserModal">
+    Add New User
+  </button>
+  <a class="nav-link" routerLink="/register">Register</a>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+
+  <table class="table table-bordered" *ngIf="users.length > 0">
+    <thead>
+    <tr>
+      <th>Username</th>
+      <th>Roles</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.username }}</td>
+      <td>{{ user.roles?.join(', ') }}</td>
+      <td>
+        <button
+          class="btn btn-danger"
+          (click)="deleteUser(user.username)"
+          [disabled]="user.username === currentUsername"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="users.length === 0" class="alert alert-info">No users found.</div>
+
+  <!-- Modal Bootstrap -->
+  <div
+    class="modal fade"
+    id="registerUserModal"
+    tabindex="-1"
+    aria-labelledby="registerUserModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registerUserModalLabel">Register New User</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Intégrer le composant RegisterComponent -->
+          <app-register></app-register>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

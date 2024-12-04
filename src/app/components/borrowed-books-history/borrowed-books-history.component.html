@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <h2>My Borrowed Books history</h2>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+    <button class="btn btn-primary" (click)="printBooks()">Print my history</button>
+  </div>
+
+  <table class="table table-bordered" *ngIf="borrowings.length > 0">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Borrowing date</th>
+      <th>Return date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let borrowing of borrowings">
+      <td>{{ borrowing.book.title }}</td>
+      <td>{{ borrowing.book.author }}</td>
+      <td>{{ borrowing.borrowDate | date:'long' }}</td>
+      <td>{{ borrowing.returnedDate ? (borrowing.returnedDate | date:'long') : 'Not returned yet' }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="borrowings.length === 0" class="alert alert-info">You have not borrowed any books.</div>
+</div>

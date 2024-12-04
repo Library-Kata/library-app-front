@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <h2>Book Catalog</h2>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Available</th>
+      <th *ngIf="isAdmin">Actions</th>
+      <th *ngIf="!isAdmin">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let book of books">
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.available ? 'Yes' : 'No' }}</td>
+      <td *ngIf="isAdmin">
+        <button *ngIf="book.available" class="btn btn-primary" (click)="borrowBook(book.id!)">Borrow</button>
+        <!-- You can add an edit or delete button here for admins -->
+      </td>
+      <td *ngIf="!isAdmin">
+        <button *ngIf="book.available" class="btn btn-primary" (click)="borrowBook(book.id!)">Borrow</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

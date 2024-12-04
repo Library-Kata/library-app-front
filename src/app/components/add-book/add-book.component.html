@@ -1,0 +1,16 @@
+<div class="container mt-5">
+  <h2>Add a New Book</h2>
+  <form [formGroup]="addBookForm" (ngSubmit)="addBook()">
+    <div class="mb-3">
+      <label for="title" class="form-label">Title:</label>
+      <input formControlName="title" id="title" class="form-control" />
+    </div>
+    <div class="mb-3">
+      <label for="author" class="form-label">Author:</label>
+      <input formControlName="author" id="author" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-success">Add Book</button>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-2">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="alert alert-success mt-2">{{ successMessage }}</div>
+  </form>
+</div>

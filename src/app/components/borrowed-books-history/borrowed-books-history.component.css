@@ -1,0 +1,21 @@
+/* Styles spécifiques pour l'impression */
+@media print {
+  button {
+    display: none; /* Masque tous les boutons */
+  }
+
+  .alert {
+    display: none; /* Masque les alertes */
+  }
+
+  body * {
+    visibility: hidden; /* Cache tous les éléments par défaut */
+  }
+
+  .container {
+    visibility: visible; /* Affiche uniquement la section à imprimer */
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

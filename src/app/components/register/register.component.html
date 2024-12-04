@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <h2>Register</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username:</label>
+      <input formControlName="username" id="username" class="form-control" />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password:</label>
+      <input type="password" formControlName="password" id="password" class="form-control" />
+    </div>
+    <div class="mb-3">
+      <label for="roles" class="form-label">Role:</label>
+      <select formControlName="roles" id="roles" class="form-select">
+        <option value="ROLE_USER">User</option>
+        <option value="ROLE_ADMIN">Admin</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+      Register
+    </button>
+    <div *ngIf="errorMessage" class="text-danger mt-2">{{ errorMessage }}</div>
+  </form>
+</div>
