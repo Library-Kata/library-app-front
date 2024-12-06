@@ -11,7 +11,9 @@ interface DecodedToken {
   exp: number;
   iat: number;
 }
-
+interface AuthResponse {
+  token: string;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -25,10 +27,10 @@ export class AuthService {
    * @param username The username.
    * @param password The password.
    */
-  login(username: string, password: string): Observable<string> {
+  login(username: string, password: string): Observable<AuthResponse> {
     return this.http
-        .post(this.apiUrl + '/login', { username, password }, { responseType: 'text' })
-        .pipe(tap((token) => this.setToken(token)));
+        .post<AuthResponse>(this.apiUrl + '/login', { username, password })
+        .pipe(tap(response => this.setToken(response.token)));
   }
 
   /**
