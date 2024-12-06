@@ -47,17 +47,12 @@ Library App Frontend is an Angular-based web application designed to provide an 
 
 1. **Run the application with Docker Compose:**
    ```bash
-   ./start.sh
-   ```
-
-2. Alternatively, run these commands manually:
-   ```bash
-   npm install
    docker-compose build
    docker-compose up
    ```
 
-3. Access the application at:
+
+2. Access the application at:
   - **Frontend URL:** `http://localhost:3000`
 
 ---

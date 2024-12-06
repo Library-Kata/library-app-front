@@ -12,12 +12,15 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'Library App';
   isAuthenticated = false;
+  username;
   isAdmin = false;
 
   constructor(private authService: AuthService, private router: Router) {
     this.isAuthenticated = this.authService.isAuthenticated();
     const roles = this.authService.getRoles();
     this.isAdmin = roles.includes('ROLE_ADMIN') || roles.includes('ROLE_SUPERADMIN');
+    this.username = this.authService.getUsername(); // Fetch the username
+
   }
 
   logout() {
